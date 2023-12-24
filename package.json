@@ -8,6 +8,7 @@
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "lint": "eslint --fix src test",
+    "vercel-build": "echo hello",
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
