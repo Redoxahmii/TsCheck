@@ -1,12 +1,3 @@
-export type BbcDocInitial = {
-  title: string;
-  description: string;
-  article: string;
-  time: string;
-  url: string;
-  img: string;
-  docId: string;
-};
 export interface NewsArticle {
   title: string;
   desc: string;

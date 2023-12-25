@@ -9,7 +9,7 @@ import {
 import firebaseApp from "./firebase";
 import { Mailer } from "./nodemailer";
 import * as cheerio from "cheerio";
-import { NewsItem } from "../interfaces/bbcDoc";
+import { NewsItem } from "../interfaces/bbcDocProps";
 async function imgExtract(htmlContent: string) {
   try {
     const $ = cheerio.load(htmlContent);

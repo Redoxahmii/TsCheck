@@ -15,6 +15,6 @@ router.get<{}, MessageResponse>("/", (_req, res) => {
 });
 router.use("/emojis", emojis);
 router.use("/hamariweb", hamariweb);
-router.use("/html", bbcfetch);
+router.use("/bbc", bbcfetch);
 router.use("/test", test);
 export default router;

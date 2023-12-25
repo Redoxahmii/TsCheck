@@ -1,6 +1,6 @@
 import { parse } from "rss-to-json";
 
-export async function Foo() {
+export async function FetchHamariWeb() {
   try {
     const rss = await parse("https://enews.hamariweb.com/feed/");
     return rss.items;
