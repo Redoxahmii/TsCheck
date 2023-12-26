@@ -30,19 +30,19 @@ app.use("/api/", api);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-// cron.schedule("0 */2 * * *", async () => {
-//   try {
-//     await HTMLextract();
-//     console.log("BBC articles added!");
-//   } catch (error) {
-//     console.log(error);
-//   }
-//   try {
-//     await FetchHamariWeb();
-//     console.log("HamariWeb articles added!");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+cron.schedule("0 */2 * * *", async () => {
+  try {
+    await HTMLextract();
+    console.log("BBC articles added!");
+  } catch (error) {
+    console.log(error);
+  }
+  try {
+    await FetchHamariWeb();
+    console.log("HamariWeb articles added!");
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export default app;
