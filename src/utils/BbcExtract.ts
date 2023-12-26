@@ -23,7 +23,7 @@ async function imgExtract(htmlContent: string) {
   }
 }
 
-export async function HTMLextract() {
+export async function BbcExtract() {
   try {
     const collectionName = "htmlwithImg";
     const url =
@@ -74,6 +74,7 @@ export async function HTMLextract() {
       console.log("No new items with content to add.Exiting program");
       return;
     }
+    return;
   } catch (error) {
     console.log(error);
   }

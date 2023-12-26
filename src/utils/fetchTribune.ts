@@ -22,6 +22,7 @@ async function extractImg(url: string) {
     const container = $(".featured-image-global");
     const imgSrc = container.find("img").attr("src");
     if (!imgSrc) {
+      console.log("No image found for: ", url);
       return null;
     } else {
       return imgSrc;
@@ -83,6 +84,7 @@ export async function fetchTribune(type: string) {
     });
 
     await Promise.all(articlePromises);
+    return;
   } catch (error) {
     console.log(error);
   }

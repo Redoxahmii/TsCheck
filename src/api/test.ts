@@ -1,10 +1,10 @@
 import express from "express";
-import { HTMLextract } from "../utils/BbcExtract";
+import { BbcExtract } from "../utils/BbcExtract";
 const router = express.Router();
 
 router.get("/", async (_req, res) => {
   try {
-    await HTMLextract();
+    await BbcExtract();
     res.json({ message: "function ran successfully" });
   } catch (error) {
     console.log(error);

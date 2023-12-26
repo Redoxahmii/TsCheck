@@ -4,9 +4,11 @@ import firebaseApp from "../utils/firebase";
 const router = express.Router();
 
 const db = getFirestore(firebaseApp);
-router.get("/", async (_req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const collectionRef = collection(db, "tribune-home");
+    const { param } = req.body;
+    console.log(param);
+    const collectionRef = collection(db, `tribune-${param}`);
     const querySnapshot = await getDocs(collectionRef);
     const docs = querySnapshot.docs.map((doc) => doc.data());
     res.json({ message: "success", data: docs });
