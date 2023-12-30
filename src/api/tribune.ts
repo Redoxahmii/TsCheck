@@ -6,9 +6,9 @@ const router = express.Router();
 const db = getFirestore(firebaseApp);
 router.post("/", async (req, res) => {
   try {
-    const { param } = req.body;
-    console.log(param);
-    const collectionRef = collection(db, `tribune-${param}`);
+    const { tribune } = req.body;
+    console.log(tribune);
+    const collectionRef = collection(db, `tribune-${tribune}`);
     const querySnapshot = await getDocs(collectionRef);
     const docs = querySnapshot.docs.map((doc) => doc.data());
     res.json({ message: "success", data: docs });

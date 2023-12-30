@@ -64,17 +64,17 @@ export async function FetchHamariWeb() {
           );
 
           console.log(
-            "Document written with ID: ",
+            "HAMARIWEB: Document written with ID: ",
             docRef.id,
             " and image added ",
             imgSrc,
           );
         } catch (error) {
-          console.error("Error adding document: ", error);
+          console.error("HAMARIWEB: Error adding document: ", error);
         }
       } else {
         console.log(
-          `Document with title '${item.title}' already exists. Skipping.`,
+          `HAMARIWEB: Document with title '${item.title}' already exists. Skipping.`,
         );
       }
     }
@@ -83,4 +83,3 @@ export async function FetchHamariWeb() {
     return error;
   }
 }
-FetchHamariWeb();

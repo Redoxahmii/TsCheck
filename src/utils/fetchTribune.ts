@@ -13,18 +13,21 @@ import {
   setDoc,
   doc,
 } from "firebase/firestore";
+import axios from "axios";
 
 async function extractImg(url: string) {
   try {
-    const page = await fetch(url);
-    const pageText = await page.text();
-    const $ = cheerio.load(pageText);
+    const response = await axios.get(url, {
+      timeout: 20000,
+    });
+    const $ = cheerio.load(response.data);
     const container = $(".featured-image-global");
     const imgSrc = container.find("img").attr("src");
     if (!imgSrc) {
       console.log("No image found for: ", url);
       return null;
     } else {
+      console.log("Image found for: ", imgSrc);
       return imgSrc;
     }
   } catch (error) {
@@ -45,7 +48,7 @@ export async function fetchTribune(type: string) {
       const imgSrc = await extractImg(item.link);
       const article = {
         title: item.title,
-        imgSrc: imgSrc,
+        imgSrc: imgSrc || null,
         description: item.description,
         link: item.link,
         published: item.published,
@@ -56,29 +59,28 @@ export async function fetchTribune(type: string) {
       };
 
       // Check if an article with the same title exists
-      const titleQuery = query(collectionRef, where("title", "==", item.title));
+      const titleQuery = query(collectionRef, where("link", "==", item.link));
       const titleSnapshot = await getDocs(titleQuery);
 
       if (titleSnapshot.empty) {
         // Add the article to Firestore
         try {
           const docRef = await addDoc(collectionRef, article);
-          console.log("Document written with ID: ", docRef.id);
+          console.log(`TRIBUNE ${type}: Document written with ID: `, docRef.id);
           const docId = docRef.id;
           // Include docId in the article object
           await setDoc(doc(collectionRef, docId), { docId }, { merge: true });
         } catch (e) {
-          console.error("Error adding document: ", e);
+          console.error(`TRIBUNE ${type}: Error adding document: `, e);
         }
       } else {
         // Update the existing article if necessary
         titleSnapshot.forEach((_doc) => {
           const existingArticle = _doc.data();
           console.log(
-            "Article with title already exists, updating: ",
+            `TRIBUNE ${type}: Articles with these titles exist already :`,
             existingArticle.title,
           );
-          // You can add update logic here if needed
         });
       }
     });
@@ -89,4 +91,5 @@ export async function fetchTribune(type: string) {
     console.log(error);
   }
 }
-tribuneTypes.forEach((type) => fetchTribune(type.param));
+// tribuneTypes.forEach((type) => fetchTribune(type.param));
+fetchTribune("games");

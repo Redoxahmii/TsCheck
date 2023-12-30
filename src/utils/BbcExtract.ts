@@ -66,12 +66,12 @@ export async function BbcExtract() {
     if (titlesWithContent.length > 0) {
       await Promise.all(docsConvert).then(() => {
         Mailer(
-          "Items with content were successfully added!",
+          "BBC: Items with content were successfully added!",
           titlesWithContent,
         );
       });
     } else {
-      console.log("No new items with content to add.Exiting program");
+      console.log("BBC: No new items with content to add.Exiting program");
       return;
     }
     return;

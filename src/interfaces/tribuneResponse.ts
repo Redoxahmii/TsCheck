@@ -4,6 +4,7 @@ export type NewsArticle = {
   imgSrc: string;
   docId: string;
   description: string;
+  hashedLink: string;
   link: string;
   published: number;
   created: number;
