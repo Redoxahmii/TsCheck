@@ -91,5 +91,6 @@ export async function fetchTribune(type: string) {
     console.log(error);
   }
 }
-// tribuneTypes.forEach((type) => fetchTribune(type.param));
-fetchTribune("games");
+tribuneTypes.forEach((type) => fetchTribune(type.param));
+// WARNING: try not to fetch all at the same time
+// fetchTribune("home");

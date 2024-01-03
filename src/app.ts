@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.get<{}, MessageResponse>("/", (_req, res) => {
   res.json({
-    message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
+    message: "hate life",
   });
 });
 
@@ -44,11 +44,11 @@ cron.schedule("0 */2 * * *", async () => {
   } catch (error) {
     console.log(error);
   }
-  try {
-    tribuneTypes.forEach((type) => fetchTribune(type.param));
-  } catch (error) {
-    console.log(error);
-  }
+  //   try {
+  //     tribuneTypes.forEach((type) => fetchTribune(type.param));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 });
 
 export default app;
