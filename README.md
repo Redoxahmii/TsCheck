@@ -3,6 +3,7 @@
 ## Description
 
 API that scrapes RSS feeds and returns the results in JSON format.
+
 [Frontend to consume this API](https://auto-blog-sigma.vercel.app/)
 
 ## Includes API Server utilities:
