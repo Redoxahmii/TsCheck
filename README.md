@@ -4,7 +4,8 @@
 
 API that scrapes RSS feeds and returns the results in JSON format.
 
-[Frontend to consume this API](https://auto-blog-sigma.vercel.app/)
+- This is structured as an Express app deployable to [Vercel](https://vercel.com/).
+- [Frontend to consume this API](https://auto-blog-sigma.vercel.app/)
 
 ## Includes API Server utilities:
 
@@ -16,6 +17,8 @@ API that scrapes RSS feeds and returns the results in JSON format.
   - Dotenv is a zero-dependency module that loads environment variables from a `.env` file into `process.env`
 - [cors](https://www.npmjs.com/package/cors)
   - CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+- [express](https://www.npmjs.com/package/express)
+  - Express js for API usage.
 
 ## Development utilities:
 
