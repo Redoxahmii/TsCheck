@@ -44,11 +44,11 @@ cron.schedule("0 */2 * * *", async () => {
   } catch (error) {
     console.log(error);
   }
-  //   try {
-  //     tribuneTypes.forEach((type) => fetchTribune(type.param));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
+  try {
+    tribuneTypes.forEach((type) => fetchTribune(type.param));
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export default app;
