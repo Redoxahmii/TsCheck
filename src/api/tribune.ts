@@ -4,6 +4,10 @@ import firebaseApp from "../utils/firebase";
 const router = express.Router();
 
 const db = getFirestore(firebaseApp);
+router.get("/", (_req, res) => {
+  res.json({ message: "Tribune API" });
+});
+
 router.post("/", async (req, res) => {
   try {
     const { tribune } = req.body;
