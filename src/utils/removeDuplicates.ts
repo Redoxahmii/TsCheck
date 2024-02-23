@@ -51,5 +51,5 @@ async function removeDuplicates(type: string) {
   }
 }
 
-// tribuneTypes.forEach((type) => removeDuplicates(type.param));
-removeDuplicates("home");
+tribuneTypes.forEach((type) => removeDuplicates(type.param));
+// removeDuplicates("home");
