@@ -37,19 +37,23 @@ async function removeDuplicates(type: string) {
     });
 
     // Remove duplicates from Firestore
+    let removedCount = 0;
     const removalPromises = duplicateIds.map(async (id) => {
       const docRef = doc(collectionRef, id);
       await deleteDoc(docRef);
       console.log(`Duplicate with ID ${id} removed.`);
+      removedCount++;
     });
 
     await Promise.all(removalPromises);
 
-    console.log("Duplicates removed successfully.");
+    console.log(
+      `Duplicates removed successfully. Total removed: ${removedCount}`,
+    );
   } catch (error) {
     console.error("Error in removing duplicates", error);
   }
 }
 
 tribuneTypes.forEach((type) => removeDuplicates(type.param));
-// removeDuplicates("home");
+// removeDuplicates("latest");
